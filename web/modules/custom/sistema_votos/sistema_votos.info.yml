@@ -1,0 +1,7 @@
+name: 'Sistema de Votos'
+type: module
+description: 'Permite a criar votações com perguntas e respostas.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - user

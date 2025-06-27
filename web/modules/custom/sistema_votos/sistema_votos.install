@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the sistema_votos module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function sistema_votos_install() {
+  \Drupal::entityTypeManager()->getStorage('pergunta')
+    ->entityDefinitionUpdateManager()
+    ->installEntityType(\Drupal::entityTypeManager())
+    ->getDefinition('pergunta');
+}

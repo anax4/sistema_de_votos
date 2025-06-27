@@ -1,0 +1,5 @@
+administer pergunta entity:
+  title: 'Administrar entidades Pergunta'
+
+administer opcao entity:
+  title: 'Administrar entidades Opção'

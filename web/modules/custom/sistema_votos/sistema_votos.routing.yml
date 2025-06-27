@@ -1,0 +1,47 @@
+entity.pergunta.collection:
+  path: '/admin/votacao/perguntas'
+  defaults:
+    _entity_list: 'pergunta'
+    _title: 'Perguntas'
+  requirements:
+    _permission: 'administer pergunta entity'
+
+entity.pergunta.add_form:
+  path: '/admin/votacao/perguntas/add'
+  defaults:
+    _entity_form: 'pergunta.add'
+    _title: 'Adicionar Pergunta'
+  requirements:
+    _permission: 'administer pergunta entity'
+
+entity.pergunta.edit_form:
+  path: '/admin/votacao/perguntas/{pergunta}/edit'
+  defaults:
+    _entity_form: 'pergunta.edit'
+    _title: 'Editar Pergunta'
+  requirements:
+    _permission: 'administer pergunta entity'
+
+entity.opcao.collection:
+  path: '/admin/votacao/opcoes'
+  defaults:
+    _entity_list: 'opcao'
+    _title: 'Opções'
+  requirements:
+    _permission: 'administer opcao entity'
+
+entity.opcao.add_form:
+  path: '/admin/votacao/opcoes/add'
+  defaults:
+    _entity_form: 'opcao.add'
+    _title: 'Adicionar Opção'
+  requirements:
+    _permission: 'administer opcao entity'
+
+entity.opcao.edit_form:
+  path: '/admin/votacao/opcoes/{opcao}/edit'
+  defaults:
+    _entity_form: 'opcao.edit'
+    _title: 'Editar Opção'
+  requirements:
+    _permission: 'administer opcao entity'

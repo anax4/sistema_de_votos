@@ -1,0 +1,4 @@
+services:
+  sistema_votos.gerenciar_votacao:
+    class: Drupal\sistema_votos\Service\GerenciarVotacao
+    arguments: ['@entity_type.manager', '@config.factory']

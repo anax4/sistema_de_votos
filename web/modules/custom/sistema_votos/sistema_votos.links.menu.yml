@@ -1,0 +1,13 @@
+sistema_votos.perguntas:
+  title: 'Perguntas'
+  description: 'Gerenciar perguntas de votação'
+  route_name: entity.pergunta.collection
+  parent: system.admin_content
+  weight: 10
+
+sistema_votos.opcoes:
+  title: 'Opções'
+  description: 'Gerenciar opções de resposta'
+  route_name: entity.opcao.collection
+  parent: system.admin_content
+  weight: 11
