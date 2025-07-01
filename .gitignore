@@ -19,6 +19,7 @@
 *.log
 *.gz
 *.sql
+!dump.sql.gz
 *.zip
 *.tar.gz
 *.sqlite
