@@ -1,0 +1,9 @@
+<h2>{{ title }}</h2>
+
+<ul class="lista-perguntas">
+  {% for link in items %}
+    <li>{{ link }}</li>
+  {% else %}
+    <li>Nenhuma pergunta disponível no momento.</li>
+  {% endfor %}
+</ul>

@@ -50,3 +50,30 @@ entity.pergunta.collection:
     _title: 'Lista de Perguntas'
   requirements:
     _permission: 'administer site configuration'
+
+sistema_votos.votacao:
+  path: '/votacao'
+  defaults:
+    _controller: '\Drupal\sistema_votos\Controller\VotacaoController::paginaVotacao'
+    _title: 'Participe da votação'
+  requirements:
+    _permission: 'access content'
+
+sistema_votos.votacao_pergunta:
+  path: '/votacao/{pergunta_id}'
+  defaults:
+    _controller: '\Drupal\sistema_votos\Controller\VotacaoController::votarPergunta'
+    _title_callback: '\Drupal\sistema_votos\Controller\VotacaoController::getPerguntaTitle'
+  requirements:
+    _permission: 'access content'
+    pergunta_id: \d+
+
+
+
+sistema_votos.processa_voto:
+  path: '/votar'
+  defaults:
+    _controller: '\Drupal\sistema_votos\Controller\VotacaoController::processaVoto'
+  requirements:
+    _permission: 'access content'
+  methods: [POST]

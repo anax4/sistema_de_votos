@@ -10,14 +10,15 @@ class DashboardController extends ControllerBase {
 
   public function content() {
     $items = [
-      Link::fromTextAndUrl('➕ Cadastrar Pergunta', Url::fromRoute('entity.pergunta.add_form'))->toString(),
-      Link::fromTextAndUrl('➕ Cadastrar Opção de Resposta', Url::fromRoute('entity.opcao.add_form'))->toString(),
+      Link::fromTextAndUrl('➕ Cadastrar Pergunta', Url::fromRoute('entity.pergunta.add_form')),
+      Link::fromTextAndUrl('➕ Cadastrar Opção de Resposta', Url::fromRoute('entity.opcao.add_form')),
+      Link::fromTextAndUrl('🗳️ Acessar Votação', Url::fromUri('internal:/votacao')),
     ];
 
-    $list = '<ul><li>' . implode('</li><li>', $items) . '</li></ul>';
-
     return [
-      '#markup' => '<h2>Sistema de Votos</h2>' . $list,
+      '#title' => $this->t('Sistema de Votos'),
+      '#theme' => 'item_list',
+      '#items' => $items,
     ];
   }
 

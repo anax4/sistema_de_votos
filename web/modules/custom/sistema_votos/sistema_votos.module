@@ -1,0 +1,15 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function sistema_votos_theme($existing, $type, $theme, $path) {
+  return [
+    'votacao_perguntas' => [
+      'variables' => [
+        'pergunta' => NULL,
+        'opcoes' => [],
+      ],
+      'template' => 'votacao-perguntas',
+    ],
+  ];
+}

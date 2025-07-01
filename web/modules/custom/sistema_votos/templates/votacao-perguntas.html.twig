@@ -1,0 +1,21 @@
+<form method="POST" action="/votar" class="form-votacao">
+	<fieldset>
+		{% if opcoes %}
+			{% for opcao in opcoes %}
+				<label style="display:block; margin-bottom:1rem;">
+					<input type="radio" name="opcao_id" value="{{ opcao.id() }}" required>
+					<strong>{{ opcao.get('titulo').value }}</strong><br>
+					{% if opcao.get('descricao').value %}
+						<small>{{ opcao.get('descricao').value }}</small>
+					{% endif %}
+				</label>
+			{% endfor %}
+
+		{% else %}
+			<p>Esta pergunta não possui opções cadastradas.</p>
+		{% endif %}
+
+		<input type="hidden" name="pergunta_id" value="{{ pergunta.id() }}">
+		<button type="submit">Votar</button>
+	</fieldset>
+</form>
