@@ -77,3 +77,11 @@ sistema_votos.processa_voto:
   requirements:
     _permission: 'access content'
   methods: [POST]
+
+sistema_votos.resultados:
+  path: '/admin/votacao/resultados'
+  defaults:
+    _controller: '\Drupal\sistema_votos\Controller\ResultadosController::resultados'
+    _title: 'Resultados das Votações'
+  requirements:
+    _permission: 'administer site configuration'

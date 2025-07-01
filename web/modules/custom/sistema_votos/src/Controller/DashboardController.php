@@ -12,6 +12,7 @@ class DashboardController extends ControllerBase {
     $items = [
       Link::fromTextAndUrl('➕ Cadastrar Pergunta', Url::fromRoute('entity.pergunta.add_form')),
       Link::fromTextAndUrl('➕ Cadastrar Opção de Resposta', Url::fromRoute('entity.opcao.add_form')),
+      Link::fromTextAndUrl('📊 Ver Resultados das Votações', Url::fromRoute('sistema_votos.resultados')),
       Link::fromTextAndUrl('🗳️ Acessar Votação', Url::fromUri('internal:/votacao')),
     ];
 

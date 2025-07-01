@@ -4,13 +4,20 @@
 			{% for opcao in opcoes %}
 				<label style="display:block; margin-bottom:1rem;">
 					<input type="radio" name="opcao_id" value="{{ opcao.id() }}" required>
+
+					{% if opcao.get('imagem').entity %}
+						<img src="{{ file_url(opcao.get('imagem').entity.getFileUri()) }}" 
+							 alt="{{ opcao.get('imagem').alt }}" 
+							 style="max-width: 200px; display:block; margin-top:0.5rem;">
+					{% endif %}
+
 					<strong>{{ opcao.get('titulo').value }}</strong><br>
+
 					{% if opcao.get('descricao').value %}
 						<small>{{ opcao.get('descricao').value }}</small>
 					{% endif %}
 				</label>
 			{% endfor %}
-
 		{% else %}
 			<p>Esta pergunta não possui opções cadastradas.</p>
 		{% endif %}

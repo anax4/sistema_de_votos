@@ -72,7 +72,7 @@ class Opcao extends ContentEntityBase {
 
     $fields['titulo'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Título'))
-      ->setRequired(TRUE)
+      ->setRequired(FALSE)
       ->setSettings(['max_length' => 255])
       ->setDisplayOptions('form', [
         'type' => 'string_textfield',

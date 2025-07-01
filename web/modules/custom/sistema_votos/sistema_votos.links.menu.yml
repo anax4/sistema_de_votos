@@ -16,3 +16,10 @@ sistema_votos.opcoes:
   parent: sistema_votos.admin
   route_name: entity.opcao.collection
   weight: 2
+
+sistema_votos.resultados:
+  title: 'Resultados das Votações'
+  description: 'Veja o total de votos por pergunta'
+  parent: system.admin_content
+  route_name: sistema_votos.resultados
+  weight: 100
