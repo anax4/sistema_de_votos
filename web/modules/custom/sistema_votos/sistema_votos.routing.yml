@@ -1,47 +1,52 @@
-entity.pergunta.collection:
+# rota pagina de perguntas
+entity.pergunta.add_form:
   path: '/admin/votacao/perguntas'
   defaults:
-    _entity_list: 'pergunta'
-    _title: 'Perguntas'
-  requirements:
-    _permission: 'administer pergunta entity'
-
-entity.pergunta.add_form:
-  path: '/admin/votacao/perguntas/add'
-  defaults:
     _entity_form: 'pergunta.add'
-    _title: 'Adicionar Pergunta'
+    _title: 'Cadastrar Pergunta'
   requirements:
-    _permission: 'administer pergunta entity'
+    _permission: 'administer site configuration'
 
-entity.pergunta.edit_form:
-  path: '/admin/votacao/perguntas/{pergunta}/edit'
-  defaults:
-    _entity_form: 'pergunta.edit'
-    _title: 'Editar Pergunta'
-  requirements:
-    _permission: 'administer pergunta entity'
-
-entity.opcao.collection:
+# rota pagina de opcoes de resposta
+entity.opcao.add_form:
   path: '/admin/votacao/opcoes'
   defaults:
-    _entity_list: 'opcao'
-    _title: 'Opções'
-  requirements:
-    _permission: 'administer opcao entity'
-
-entity.opcao.add_form:
-  path: '/admin/votacao/opcoes/add'
-  defaults:
     _entity_form: 'opcao.add'
-    _title: 'Adicionar Opção'
+    _title: 'Cadastrar Opção de Resposta'
   requirements:
-    _permission: 'administer opcao entity'
+    _permission: 'administer site configuration'
 
-entity.opcao.edit_form:
-  path: '/admin/votacao/opcoes/{opcao}/edit'
+sistema_votos.votacao_page:
+  path: '/votacao'
   defaults:
-    _entity_form: 'opcao.edit'
-    _title: 'Editar Opção'
+    _controller: '\Drupal\sistema_votos\Controller\VotacaoController::paginaVotacao'
+    _title: 'Participe da votação'
   requirements:
-    _permission: 'administer opcao entity'
+    _permission: 'access content'
+
+
+# rota da home dashboard
+sistema_votos.homepage:
+  path: '/dashboard'
+  defaults:
+    _controller: '\Drupal\sistema_votos\Controller\DashboardController::content'
+    _title: 'Administração Vota Uai'
+  requirements:
+    _permission: 'access content'
+
+
+entity.opcao.collection:
+  path: '/admin/votacao/opcoes/lista'
+  defaults:
+    _entity_list: 'opcao'
+    _title: 'Lista de Opções'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.pergunta.collection:
+  path: '/admin/votacao/perguntas/lista'
+  defaults:
+    _entity_list: 'pergunta'
+    _title: 'Lista de Perguntas'
+  requirements:
+    _permission: 'administer site configuration'

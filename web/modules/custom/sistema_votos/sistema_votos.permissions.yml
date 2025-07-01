@@ -3,3 +3,6 @@ administer pergunta entity:
 
 administer opcao entity:
   title: 'Administrar entidades Opção'
+
+administer pergunta entities:
+  title: 'Administrar perguntas de votação'

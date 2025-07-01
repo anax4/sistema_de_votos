@@ -1,13 +1,18 @@
-sistema_votos.perguntas:
-  title: 'Perguntas'
-  description: 'Gerenciar perguntas de votação'
-  route_name: entity.pergunta.collection
+sistema_votos.admin:
+  title: 'Vota Uai'
+  description: 'Gerenciar perguntas e opções de resposta.'
   parent: system.admin_content
-  weight: 10
+  route_name: sistema_votos.dashboard
+  weight: 0
+
+sistema_votos.perguntas:
+  title: 'Cadastrar Pergunta'
+  parent: sistema_votos.admin
+  route_name: entity.pergunta.add_form
+  weight: 1
 
 sistema_votos.opcoes:
-  title: 'Opções'
-  description: 'Gerenciar opções de resposta'
+  title: 'Cadastrar Opções'
+  parent: sistema_votos.admin
   route_name: entity.opcao.collection
-  parent: system.admin_content
-  weight: 11
+  weight: 2
