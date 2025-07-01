@@ -6,6 +6,7 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityChangedTrait;
+use Drupal\Core\Field\FieldItemListInterface;
 
 /**
  * Defines the Opcao entity.
@@ -22,15 +23,20 @@ use Drupal\Core\Entity\EntityChangedTrait;
  *   },
  *   admin_permission = "administer opcao entity",
  *   handlers = {
- *     "list_builder" = "Drupal\Core\Entity\EntityListBuilder",
+ *     "list_builder" = "Drupal\sistema_votos\OpcaoListBuilder",
  *     "form" = {
- *       "add" = "Drupal\Core\Entity\ContentEntityForm",
- *       "edit" = "Drupal\Core\Entity\ContentEntityForm",
- *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm"
+ *       "default" = "Drupal\sistema_votos\Form\OpcaoForm",
+ *       "add" = "Drupal\sistema_votos\Form\OpcaoForm",
+ *       "edit" = "Drupal\sistema_votos\Form\OpcaoForm",
+ *       "delete" = "Drupal\sistema_votos\Form\OpcaoDeleteForm"
+ *     },
+ *     "route_provider" = {
+ *       "default" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider"
  *     }
  *   },
  *   links = {
  *     "canonical" = "/opcao/{opcao}",
+ *     "add-form" = "/admin/opcao/add",
  *     "edit-form" = "/admin/opcao/{opcao}/edit",
  *     "delete-form" = "/admin/opcao/{opcao}/delete",
  *     "collection" = "/admin/opcao"
@@ -42,10 +48,27 @@ class Opcao extends ContentEntityBase {
   use EntityChangedTrait;
 
   /**
-   * Define os campos base da entidade.
+   * {@inheritdoc}
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
+
+    
+        $fields['pergunta'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Pergunta associada'))
+      ->setDescription(t('Escolha a pergunta à qual esta opção está ligada.'))
+      ->setSetting('target_type', 'pergunta')
+      ->setRequired(TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'options_select',
+        'weight' => -2,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+   ->setDefaultValueCallback('\Drupal\sistema_votos\Entity\Opcao::defaultPergunta');
+
+
+
 
     $fields['titulo'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Título'))
@@ -74,15 +97,6 @@ class Opcao extends ContentEntityBase {
         'weight' => -3,
       ]);
 
-    $fields['pergunta'] = BaseFieldDefinition::create('entity_reference')
-      ->setLabel(t('Pergunta associada'))
-      ->setSetting('target_type', 'pergunta')
-      ->setRequired(TRUE)
-      ->setDisplayOptions('form', [
-        'type' => 'options_select',
-        'weight' => -2,
-      ]);
-
     $fields['total_votos'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Total de votos'))
       ->setDefaultValue(0)
@@ -105,5 +119,26 @@ class Opcao extends ContentEntityBase {
 
     return $fields;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+public function label() {
+  if ($this->get('pergunta')->entity) {
+    return $this->get('pergunta')->entity->label();
+  }
+  return $this->get('titulo')->value;
+}
+
+
+public static function defaultPergunta($entity, $context) {
+  $query = \Drupal::entityTypeManager()->getStorage('pergunta')->getQuery()
+    ->accessCheck(FALSE) 
+    ->sort('criado', 'ASC')
+    ->range(0, 1);
+  $ids = $query->execute();
+
+  return $ids ? reset($ids) : NULL;
+}
 
 }
