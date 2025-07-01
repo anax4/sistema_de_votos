@@ -1,0 +1,17 @@
+uuid: b456b218-b892-4518-99dc-2b669b0d899e
+langcode: en
+status: true
+dependencies:
+  module:
+    - serialization
+    - sistema_votos
+    - user
+id: pergunta_resource
+plugin_id: pergunta_resource
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

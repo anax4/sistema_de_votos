@@ -1,0 +1,22 @@
+uuid: e050ee13-8d47-4381-8fe8-f3234a74c492
+langcode: en
+status: true
+dependencies:
+  module:
+    - serialization
+    - sistema_votos
+    - user
+id: entity.pergunta
+plugin_id: 'entity:pergunta'
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

@@ -1,0 +1,22 @@
+uuid: bb807555-8a77-4589-a3a9-266b0f15fd4c
+langcode: en
+status: true
+dependencies:
+  module:
+    - serialization
+    - sistema_votos
+    - user
+id: entity.opcao
+plugin_id: 'entity:opcao'
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

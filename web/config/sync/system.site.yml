@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: en
+uuid: a8db2e3f-94dd-4d88-b7a0-6421d3695938
+name: 'Sistema de Votos'
+mail: admin@example.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /dashboard
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: null

@@ -1,0 +1,34 @@
+uuid: 3cfb147b-2e85-4384-bcce-dc9bf46b6d25
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+    - rest.resource.pergunta_resource
+    - rest.resource.voto_resource
+  module:
+    - comment
+    - contact
+    - filter
+    - rest
+    - search
+    - sistema_votos
+    - system
+_core:
+  default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'administer opcao entity'
+  - 'administer pergunta entities'
+  - 'administer pergunta entity'
+  - 'administer rest resources'
+  - 'restful get pergunta_resource'
+  - 'restful post voto_resource'
+  - 'search content'
+  - 'use text format restricted_html'

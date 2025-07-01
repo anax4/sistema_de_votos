@@ -1,0 +1,17 @@
+uuid: ae28ef92-6512-49c8-90cf-c3c51282aaa2
+langcode: en
+status: true
+dependencies:
+  module:
+    - serialization
+    - sistema_votos
+    - user
+id: voto_resource
+plugin_id: voto_resource
+granularity: method
+configuration:
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
